@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Open House - Interested?</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1 id="prop-address">123 Main St, City, ST</h1>
+      <p id="prop-price">$499,000</p>
+      <p id="prop-desc">Beautiful 3 bed / 2 bath home close to schools and parks.</p>
+    </header>
+
+    <section class="form-card">
+      <h2>I'm interested — send details</h2>
+      <!-- Set action to your Formspree endpoint or remove action to use Netlify Forms (see README) -->
+      <form id="interestForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Full name *
+          <input name="name" required />
+        </label>
+        <label>Email address *
+          <input name="email" type="email" required />
+        </label>
+        <label>Phone number
+          <input name="phone" type="tel" />
+        </label>
+        <label>Best time to contact
+          <select name="best_time">
+            <option>Anytime</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Evening</option>
+          </select>
+        </label>
+        <label>Message
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <!-- Honeypot field to reduce spam -->
+        <input type="text" name="_gotcha" style="display:none" />
+        <button type="submit">Send me details</button>
+      </form>
+      <p class="note">You'll receive listing details by email. Your info won't be shared.</p>
+    </section>
+
+    <section id="listing" class="listing-card">
+      <h3>Key features</h3>
+      <ul id="prop-features"></ul>
+    </section>
+
+    <button id="adminBtn" class="admin-btn">Admin</button>
+
+    <!-- Admin modal -->
+    <div id="adminModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-inner">
+        <h3>Admin — Edit listing</h3>
+        <label>Password <input id="pwInput" type="password" /></label>
+        <button id="pwLogin">Unlock</button>
+
+        <form id="adminForm" class="hidden" onsubmit="return false;">
+          <label>Address <input id="inAddress" /></label>
+          <label>Price <input id="inPrice" /></label>
+          <label>Description <textarea id="inDesc" rows="3"></textarea></label>
+          <label>Features (comma separated) <input id="inFeatures" /></label>
+          <label>Formspree ID (replace YOUR_FORM_ID in the form action) <input id="inFormId" /></label>
+          <div class="admin-actions">
+            <button id="saveListing" type="button">Save</button>
+            <button id="resetListing" type="button">Reset to default</button>
+          </div>
+        </form>
+
+        <button id="closeAdmin">Close</button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <small>Made with ♥ for open houses</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
